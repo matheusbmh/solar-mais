@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Mais — Energia Solar para a Bahia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #F5C400;
+      --yellow-dark: #D4A900;
+      --yellow-light: #FFF8D6;
+      --blue: #1B6FBF;
+      --blue-dark: #0F4F8C;
+      --blue-light: #E8F2FC;
+      --white: #ffffff;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-400: #9CA3AF;
+      --gray-600: #4B5563;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0 5%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo img {
+      height: 56px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-600);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: background .2s, transform .2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-dark) !important;
+      color: var(--white) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      background: linear-gradient(135deg, var(--white) 0%, var(--blue-light) 50%, var(--yellow-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(245,196,0,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px; left: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(27,111,191,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow-light);
+      border: 1px solid var(--yellow);
+      color: var(--yellow-dark);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge span { font-size: 16px; }
+
+    .hero h1 {
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--gray-900);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+
+    .hero h1 strong {
+      color: var(--yellow-dark);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--gray-600);
+      margin-bottom: 16px;
+      font-weight: 400;
+      max-width: 480px;
+    }
+
+    .hero-disclaimer {
+      font-size: 14px;
+      color: var(--gray-400);
+      margin-bottom: 36px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--white);
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all .25s;
+      box-shadow: 0 4px 20px rgba(27,111,191,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(27,111,191,0.45);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--blue);
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid var(--blue);
+      cursor: pointer;
+      transition: all .25s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+    }
+
+    /* Hero visual card */
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-200);
+    }
+
+    .hero-card-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray-400);
+      margin-bottom: 20px;
+    }
+
+    .bill-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .bill-box {
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .bill-box.before {
+      background: var(--gray-100);
+    }
+
+    .bill-box.after {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+    }
+
+    .bill-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+
+    .bill-value {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .bill-box.before .bill-value { color: var(--gray-800); }
+    .bill-box.after .bill-value { color: var(--yellow); }
+
+    .bill-desc {
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .saving-tag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 16px;
+    }
+
+    .saving-tag span {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat-mini {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-mini-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-mini-label {
+      font-size: 11px;
+      color: var(--gray-400);
+      font-weight: 500;
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 96px 5%; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 3px;
+      background: var(--yellow);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--gray-900);
+      margin-bottom: 16px;
+    }
+
+    h2 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+
+    .section-sub {
+      font-size: 18px;
+      color: var(--gray-600);
+      max-width: 560px;
+      margin-bottom: 64px;
+    }
+
+    /* ─── COMO FUNCIONA ─── */
+    .how {
+      background: var(--gray-50);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 16.6%;
+      right: 16.6%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--yellow), var(--blue));
+      z-index: 0;
+    }
+
+    .step {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray-200);
+      position: relative;
+      z-index: 1;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .step:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 24px;
+    }
+
+    .step:nth-child(1) .step-num { background: var(--yellow-light); color: var(--yellow-dark); }
+    .step:nth-child(2) .step-num { background: var(--blue-light); color: var(--blue); }
+    .step:nth-child(3) .step-num { background: linear-gradient(135deg, var(--blue), var(--yellow-dark)); color: white; }
+
+    .step h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--gray-900);
+    }
+
+    .step p {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ─── SIMULADOR ─── */
+    .simulator-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .sim-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .sim-card h3 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .sim-desc {
+      font-size: 15px;
+      color: var(--gray-600);
+      margin-bottom: 32px;
+    }
+
+    .input-group {
+      margin-bottom: 24px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-prefix {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+
+    .sim-input {
+      width: 100%;
+      padding: 14px 16px 14px 40px;
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gray-900);
+      font-family: 'Inter', sans-serif;
+      transition: border-color .2s;
+      outline: none;
+      background: var(--gray-50);
+    }
+
+    .sim-input:focus {
+      border-color: var(--blue);
+      background: var(--white);
+    }
+
+    .slider-wrap {
+      margin-bottom: 32px;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--gray-400);
+      margin-top: 8px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: linear-gradient(to right, var(--blue) 0%, var(--blue) var(--fill, 0%), var(--gray-200) var(--fill, 0%));
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 3px solid var(--blue);
+      box-shadow: 0 2px 8px rgba(27,111,191,0.3);
+      cursor: pointer;
+    }
+
+    .result-card {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      border-radius: 20px;
+      padding: 32px;
+      color: white;
+      margin-top: 24px;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+    }
+
+    .result-row:not(:last-child) {
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .result-label {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .result-value {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .result-value.highlight {
+      color: var(--yellow);
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .result-annual {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .result-annual p {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+
+    .result-annual strong {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--yellow);
+    }
+
+    /* Simulator right side */
+    .sim-info {
+      padding-top: 8px;
+    }
+
+    .sim-info h2 { margin-bottom: 20px; }
+
+    .sim-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .benefit-icon.yellow { background: var(--yellow-light); }
+    .benefit-icon.blue { background: var(--blue-light); }
+
+    .benefit-text h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .benefit-text p {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* ─── USINAS / MAPA ─── */
+    .usinas {
+      background: var(--gray-900);
+      color: white;
+    }
+
+    .usinas .section-label { color: var(--yellow); }
+    .usinas h2 { color: white; }
+    .usinas h2 em { color: var(--yellow); }
+    .usinas .section-sub { color: var(--gray-400); }
+
+    .usinas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* Solar Map */
+    .solar-map-container {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #0a1628, #0d2240);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .map-title {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.6);
+      z-index: 10;
+    }
+
+    /* Bahia SVG Map */
+    .bahia-map {
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .solar-legend {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      padding: 12px 16px;
+      z-index: 10;
+    }
+
+    .legend-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+    }
+
+    .legend-bar {
+      width: 120px;
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #1B4F8C, #2980B9, #F39C12, #E74C3C, #C0392B);
+      margin-bottom: 4px;
+    }
+
+    .legend-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .irece-pulse {
+      position: absolute;
+      top: 38%;
+      left: 45%;
+      z-index: 10;
+    }
+
+    .pulse-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(245, 196, 0, 0.2);
+      animation: pulse 2s ease-out infinite;
+    }
+
+    .pulse-ring:nth-child(2) { animation-delay: 0.5s; }
+    .pulse-ring:nth-child(3) { animation-delay: 1s; }
+
+    @keyframes pulse {
+      0% { transform: translate(-50%,-50%) scale(0.5); opacity: 1; }
+      100% { transform: translate(-50%,-50%) scale(2.5); opacity: 0; }
+    }
+
+    .irece-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--yellow);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 20px rgba(245,196,0,0.8);
+      position: relative;
+      z-index: 1;
+    }
+
+    .irece-label {
+      position: absolute;
+      top: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--yellow);
+      color: var(--gray-900);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .irece-label::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--yellow);
+    }
+
+    .usinas-info {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .usina-stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .usina-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(245,196,0,0.15);
+      border: 1px solid rgba(245,196,0,0.3);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .usina-stat h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
+
+    .usina-stat p {
+      font-size: 15px;
+      color: var(--gray-400);
+      line-height: 1.7;
+    }
+
+    /* ─── COELBA ─── */
+    .coelba-section {
+      background: linear-gradient(135deg, var(--blue-light) 0%, var(--white) 100%);
+    }
+
+    .coelba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .coverage-visual {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-200);
+      text-align: center;
+    }
+
+    .bahia-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 180px;
+      height: 180px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      border-radius: 50%;
+      margin: 0 auto 32px;
+      box-shadow: 0 8px 40px rgba(27,111,191,0.4);
+    }
+
+    .bahia-badge span {
+      font-size: 48px;
+      margin-bottom: 4px;
+    }
+
+    .bahia-badge p {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .coverage-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .coverage-sub {
+      font-size: 15px;
+      color: var(--gray-600);
+      margin-bottom: 24px;
+    }
+
+    .coelba-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-light);
+      border: 1px solid var(--blue);
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 50px;
+    }
+
+    .vantagens-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .vantagem {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray-200);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .vantagem:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .vantagem-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .vantagem h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .vantagem p {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 50%, #1a5fa0 100%);
+      color: white;
+      text-align: center;
+      padding: 120px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(245,196,0,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,196,0,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,196,0,0.2);
+      border: 1px solid rgba(245,196,0,0.4);
+      color: var(--yellow);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+
+    .cta-section h2 {
+      color: white;
+      font-size: clamp(32px, 4vw, 52px);
+      margin-bottom: 20px;
+    }
+
+    .cta-section h2 em {
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      opacity: 0.8;
+      margin-bottom: 48px;
+    }
+
+    /* Form */
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color .2s;
+      backdrop-filter: blur(4px);
+    }
+
+    .form-input::placeholder { color: rgba(255,255,255,0.5); }
+    .form-input:focus { border-color: var(--yellow); }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--gray-900);
+      border: none;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all .25s;
+      box-shadow: 0 4px 24px rgba(245,196,0,0.4);
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-cta:hover {
+      background: #FFD700;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(245,196,0,0.5);
+    }
+
+    .cta-guarantee {
+      font-size: 13px;
+      opacity: 0.6;
+      margin-top: 16px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--gray-900);
+      color: var(--gray-400);
+      padding: 48px 5%;
+      text-align: center;
+    }
+
+    .footer-logo {
+      height: 48px;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      font-size: 13px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+
+      /* ── Nav ── */
+      nav { padding: 0 5%; height: 80px; justify-content: center; }
+      .nav-links { display: none; }
+      .nav-logo img { height: 68px; }
+
+      /* ── Hero ── */
+      .hero { padding: 90px 5% 56px; }
+      .hero-content { grid-template-columns: 1fr; gap: 40px; }
+      .hero-badge { font-size: 12px; }
+      .hero h1 { font-size: 30px; }
+      .hero-sub { font-size: 15px; max-width: 100%; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; text-align: center; }
+
+      /* Esconde o card visual no mobile — hero fica limpo */
+      .hero-visual { display: none; }
+
+      /* ── Seções genéricas ── */
+      section { padding: 60px 5%; }
+      .section-sub { font-size: 15px; margin-bottom: 36px; }
+
+      /* ── Como funciona ── */
+      .steps { grid-template-columns: 1fr; gap: 20px; }
+      .steps::before { display: none; }
+      .step { padding: 24px 20px; }
+      .step-num { width: 44px; height: 44px; font-size: 18px; margin-bottom: 16px; }
+
+      /* ── Simulador ── */
+      .simulator-wrap { grid-template-columns: 1fr; gap: 36px; }
+      .sim-card { padding: 24px 20px; }
+      .result-value.highlight { font-size: 22px; }
+      .result-annual strong { font-size: 24px; }
+      .sim-info { padding-top: 0; }
+      .sim-info h2 { font-size: 24px; }
+      .sim-benefits { gap: 20px; }
+      .benefit-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 16px;
+        padding: 20px;
+      }
+      .benefit-icon { width: 44px; height: 44px; font-size: 20px; }
+      .benefit-text h4 { font-size: 15px; }
+      .benefit-text p { font-size: 13px; line-height: 1.6; }
+
+      /* ── Usinas ── */
+      .usinas-grid { grid-template-columns: 1fr; gap: 36px; }
+      .solar-map-container { max-height: 320px; }
+      .usinas-info { gap: 20px; }
+      .usina-stat { gap: 14px; }
+      .usina-icon { width: 44px; height: 44px; font-size: 20px; flex-shrink: 0; }
+
+      /* ── COELBA ── */
+      .coelba-grid { grid-template-columns: 1fr; gap: 36px; }
+      .bahia-badge { width: 130px; height: 130px; }
+      .bahia-badge span { font-size: 36px; }
+      .vantagem { padding: 18px 16px; }
+      .vantagem:hover { transform: none; }
+
+      /* ── CTA ── */
+      .cta-section { padding: 72px 5%; }
+      .cta-section h2 { font-size: 26px; }
+      .cta-section p { font-size: 15px; margin-bottom: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+      .btn-cta { font-size: 15px; padding: 16px 24px; }
+
+      /* ── Footer ── */
+      footer { padding: 40px 5%; }
+      .footer-logo { height: 52px; }
+    }
+
+    /* ─── UTILITIES ─── */
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .text-center { text-align: center; }
+
+    .mb-0 { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="./logo.png" alt="Solar Mais" loading="eager" />
+  </div>
+  <ul class="nav-links">
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#simulador">Simulador</a></li>
+    <li><a href="#usinas">Nossas Usinas</a></li>
+    <li><a href="#contato" class="nav-cta">Quero economizar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span>⚡</span> Exclusivo para a Bahia · Distribuidora COELBA
+      </div>
+      <h1>
+        Pague <strong>20% menos</strong><br/>
+        na sua conta de<br/>
+        <em>energia agora.</em>
+      </h1>
+      <p class="hero-sub">
+        Sem investimento. Sem instalação. Sem obras. Você só assina e começa a economizar no próximo ciclo.
+      </p>
+      <p class="hero-disclaimer">✓ 100% gratuito para o cliente · ✓ Desconto garantido em contrato · ✓ Energia 100% solar</p>
+      <div class="hero-btns">
+        <a href="#simulador" class="btn-primary">⚡ Simular minha economia</a>
+        <a href="#como-funciona" class="btn-secondary">Como funciona</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-title">📊 Comparativo da sua conta</div>
+        <div class="bill-compare">
+          <div class="bill-box before">
+            <div class="bill-label">Hoje</div>
+            <div class="bill-value">R$500</div>
+            <div class="bill-desc">sem desconto</div>
+          </div>
+          <div class="bill-box after">
+            <div class="bill-label">Com Solar Mais</div>
+            <div class="bill-value">R$400</div>
+            <div class="bill-desc">com 20% off</div>
+          </div>
+        </div>
+        <div class="saving-tag">
+          <span>💰 Você economiza R$100 por mês · R$1.200 por ano</span>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-mini">
+          <div class="stat-mini-value">20%</div>
+          <div class="stat-mini-label">de desconto garantido</div>
+        </div>
+        <div class="stat-mini">
+          <div class="stat-mini-value">R$0</div>
+          <div class="stat-mini-label">investimento inicial</div>
+        </div>
+        <div class="stat-mini">
+          <div class="stat-mini-value">100%</div>
+          <div class="stat-mini-label">energia solar limpa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how" id="como-funciona">
+  <div class="container text-center">
+    <div class="section-label">Como funciona</div>
+    <h2>Simples assim, em <em>3 passos</em></h2>
+    <p class="section-sub">Sem burocracia, sem obras, sem investimento. Em poucos dias você já começa a economizar.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Troca de titularidade</h3>
+        <p>Você transfere a titularidade da sua conta de energia para a <strong>Associação Solar Mais</strong>. Sem obras, sem instalação, sem nenhum investimento.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Nossas usinas geram sua energia</h3>
+        <p>Nossas usinas solares em Irecê, Bahia — região com altíssima incidência solar — geram energia e suprem o consumo da sua unidade.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Você paga com 20% de desconto</h3>
+        <p>Você recebe a fatura com 20% de desconto e paga diretamente para a <strong>Associação Solar Mais</strong>. Simples, seguro e garantido em contrato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section id="simulador">
+  <div class="simulator-wrap container">
+    <div class="sim-card">
+      <h3>💡 Simule sua economia</h3>
+      <p class="sim-desc">Insira o valor da sua conta atual e veja quanto você vai economizar com a Solar Mais.</p>
+
+      <div class="input-group">
+        <label for="conta-valor">Valor atual da sua conta (R$)</label>
+        <div class="input-wrap">
+          <span class="input-prefix">R$</span>
+          <input type="number" id="conta-valor" class="sim-input" value="500" min="100" max="50000" oninput="calcular()" />
+        </div>
+      </div>
+
+      <div class="slider-wrap">
+        <input type="range" id="slider" min="100" max="5000" value="500" oninput="syncSlider(this.value)" />
+        <div class="slider-labels">
+          <span>R$ 100</span>
+          <span>R$ 5.000</span>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-row">
+          <span class="result-label">Conta atual (COELBA)</span>
+          <span class="result-value" id="res-atual">R$ 500,00</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Desconto Solar Mais (20%)</span>
+          <span class="result-value" style="color: var(--yellow);" id="res-desconto">− R$ 100,00</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Você paga por mês</span>
+          <span class="result-value highlight" id="res-final">R$ 400,00</span>
+        </div>
+        <div class="result-annual">
+          <p>Economia acumulada em 12 meses</p>
+          <strong id="res-anual">R$ 1.200,00</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-info">
+      <div class="section-label">Por que Solar Mais</div>
+      <h2>O desconto que você <em>merecia</em> há muito tempo</h2>
+      <p class="section-sub mb-0">Enquanto a conta de luz só aumenta, nós travamos 20% de economia para você.</p>
+
+      <div class="sim-benefits">
+        <div class="benefit-item">
+          <div class="benefit-icon yellow">🤝</div>
+          <div class="benefit-text">
+            <h4>Sem investimento, nunca</h4>
+            <p>Você não paga nenhum centavo para entrar. Zero de taxa de adesão, instalação ou manutenção. Só economia.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon blue">📄</div>
+          <div class="benefit-text">
+            <h4>Desconto garantido em contrato</h4>
+            <p>O desconto de 20% está previsto em contrato. Não é promoção, não é condicionado a nada. É seu por direito.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon yellow">🌱</div>
+          <div class="benefit-text">
+            <h4>Energia 100% renovável</h4>
+            <p>Toda a energia gerada é limpa e solar. Você ainda contribui para um futuro mais sustentável para a Bahia.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon blue">⚡</div>
+          <div class="benefit-text">
+            <h4>Funciona com qualquer imóvel</h4>
+            <p>Casa, apartamento, comércio ou indústria. Não precisa ser proprietário, não precisa ter telhado disponível.</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="#contato" class="btn-primary">Quero meu desconto agora →</a>
+    </div>
+  </div>
+</section>
+
+<!-- USINAS / MAPA SOLAR -->
+<section class="usinas" id="usinas">
+  <div class="container">
+    <div class="section-label">Nossas Usinas</div>
+    <h2>Geração em <em>Irecê, Bahia</em> — onde o sol brilha mais forte</h2>
+    <p class="section-sub">Nossas usinas estão estrategicamente localizadas em uma das regiões com maior incidência solar da Bahia.</p>
+
+    <div class="usinas-grid">
+      <!-- Mapa Solar -->
+      <div class="solar-map-container">
+        <div class="map-title">☀️ Incidência Solar — Bahia, Brasil</div>
+
+        <svg class="bahia-map" viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="solarHeat" cx="50%" cy="38%" r="55%">
+              <stop offset="0%" stop-color="#FF6B00" stop-opacity="0.9"/>
+              <stop offset="30%" stop-color="#FF9500" stop-opacity="0.75"/>
+              <stop offset="55%" stop-color="#FFC300" stop-opacity="0.6"/>
+              <stop offset="80%" stop-color="#FFE066" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#2980B9" stop-opacity="0.3"/>
+            </radialGradient>
+            <filter id="blur">
+              <feGaussianBlur stdDeviation="8"/>
+            </filter>
+          </defs>
+
+          <!-- Forma estilizada da Bahia -->
+          <path
+            d="M200,30 L280,50 L340,90 L370,140 L360,200 L340,260 L300,310 L270,360 L230,390 L190,395 L160,380 L130,350 L100,300 L70,250 L50,190 L60,130 L90,80 L140,45 Z"
+            fill="url(#solarHeat)"
+            stroke="rgba(255,255,255,0.15)"
+            stroke-width="1"
+          />
+
+          <!-- Overlay de calor mais intenso no centro-norte (Irecê) -->
+          <ellipse cx="195" cy="155" rx="90" ry="70"
+            fill="#FF6B00" opacity="0.3" filter="url(#blur)"/>
+          <ellipse cx="195" cy="155" rx="50" ry="40"
+            fill="#FF4500" opacity="0.35" filter="url(#blur)"/>
+
+          <!-- Grid de linhas estilo mapa -->
+          <line x1="50" y1="130" x2="370" y2="130" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <line x1="50" y1="200" x2="370" y2="200" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <line x1="50" y1="270" x2="370" y2="270" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <line x1="130" y1="30" x2="130" y2="395" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <line x1="200" y1="30" x2="200" y2="395" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <line x1="270" y1="30" x2="270" y2="395" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+
+          <!-- Cidades referência -->
+          <circle cx="300" cy="310" r="4" fill="rgba(255,255,255,0.4)"/>
+          <text x="308" y="314" fill="rgba(255,255,255,0.4)" font-size="10" font-family="Inter,sans-serif">Salvador</text>
+
+          <circle cx="120" cy="270" r="3" fill="rgba(255,255,255,0.3)"/>
+          <text x="80" y="274" fill="rgba(255,255,255,0.3)" font-size="9" font-family="Inter,sans-serif">Vitória da C.</text>
+
+          <circle cx="255" cy="90" r="3" fill="rgba(255,255,255,0.3)"/>
+          <text x="263" y="94" fill="rgba(255,255,255,0.3)" font-size="9" font-family="Inter,sans-serif">Juazeiro</text>
+
+          <!-- Irecê - destaque -->
+          <circle cx="192" cy="155" r="14" fill="rgba(245,196,0,0.25)" stroke="rgba(245,196,0,0.5)" stroke-width="1.5"/>
+          <circle cx="192" cy="155" r="8" fill="#F5C400" stroke="white" stroke-width="2.5"/>
+
+          <!-- Label Irecê -->
+          <rect x="150" y="115" width="85" height="26" rx="13" fill="#F5C400"/>
+          <text x="192" y="132" text-anchor="middle" fill="#111827" font-size="11" font-weight="800" font-family="Inter,sans-serif">📍 IRECÊ</text>
+          <line x1="192" y1="141" x2="192" y2="147" stroke="#F5C400" stroke-width="2"/>
+
+          <!-- Indicador de maior irradiação -->
+          <text x="200" y="185" text-anchor="middle" fill="rgba(255,165,0,0.9)" font-size="9" font-family="Inter,sans-serif" font-weight="600">6.2 kWh/m²/dia</text>
+        </svg>
+
+        <div class="solar-legend">
+          <div class="legend-title">Irradiação Solar</div>
+          <div class="legend-bar"></div>
+          <div class="legend-labels">
+            <span>Baixa</span>
+            <span>Alta</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infos das usinas -->
+      <div class="usinas-info">
+        <div class="usina-stat">
+          <div class="usina-icon">📍</div>
+          <div>
+            <h4>Irecê, Bahia — coração do sertão solar</h4>
+            <p>Nossas usinas estão localizadas em Irecê, uma das regiões com maior irradiação solar da Bahia, com média de <strong style="color:var(--yellow)">6,2 kWh/m²/dia</strong> — acima da média nacional de 5,5 kWh/m²/dia.</p>
+          </div>
+        </div>
+        <div class="usina-stat">
+          <div class="usina-icon">☀️</div>
+          <div>
+            <h4>+300 dias de sol por ano</h4>
+            <p>O sertão baiano é privilegiado pela natureza. Irecê registra mais de 300 dias de sol por ano, garantindo geração consistente e desconto contínuo para nossos clientes.</p>
+          </div>
+        </div>
+        <div class="usina-stat">
+          <div class="usina-icon">⚡</div>
+          <div>
+            <h4>Você paga para a Associação Solar Mais</h4>
+            <p>Com a titularidade transferida, a conta chega em nome da Associação Solar Mais. Você paga com 20% de desconto diretamente para nós, sem lidar com a COELBA.</p>
+          </div>
+        </div>
+        <div class="usina-stat">
+          <div class="usina-icon">🌱</div>
+          <div>
+            <h4>100% limpa e renovável</h4>
+            <p>Geração fotovoltaica limpa, sem emissão de CO₂, sem barulho. Você economiza e ainda contribui para um Nordeste mais sustentável.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COELBA -->
+<section class="coelba-section">
+  <div class="coelba-grid">
+    <div class="coverage-visual">
+      <div class="bahia-badge">
+        <span>🏖️</span>
+        <p>Estado da Bahia</p>
+      </div>
+      <div class="coverage-title">Atendemos toda a Bahia</div>
+      <div class="coverage-sub">Qualquer cidade atendida pela COELBA pode aderir ao nosso serviço — sem sair de casa.</div>
+      <div class="coelba-tag">⚡ Distribuidora: COELBA</div>
+    </div>
+
+    <div>
+      <div class="section-label">Área de atuação</div>
+      <h2>Exclusivo para <em>clientes COELBA</em> na Bahia</h2>
+      <p class="section-sub">O sistema de geração distribuída funciona com a concessionária do seu estado. Na Bahia, isso é a COELBA.</p>
+
+      <div class="vantagens-list">
+        <div class="vantagem">
+          <div class="vantagem-icon">🏠</div>
+          <div>
+            <h4>Residências e comércios</h4>
+            <p>Funciona para qualquer unidade consumidora atendida pela COELBA, seja residência, comércio ou indústria.</p>
+          </div>
+        </div>
+        <div class="vantagem">
+          <div class="vantagem-icon">📋</div>
+          <div>
+            <h4>Regulamentado pela ANEEL</h4>
+            <p>A geração distribuída é regulamentada pela Resolução ANEEL 482/2012 e Lei 14.300/2022. Tudo seguro e legal.</p>
+          </div>
+        </div>
+        <div class="vantagem">
+          <div class="vantagem-icon">🔒</div>
+          <div>
+            <h4>Desconto garantido em contrato</h4>
+            <p>O percentual de 20% está previsto em contrato com validade jurídica. Nenhuma surpresa na sua conta.</p>
+          </div>
+        </div>
+        <div class="vantagem">
+          <div class="vantagem-icon">📱</div>
+          <div>
+            <h4>Adesão 100% digital</h4>
+            <p>Todo o processo é feito online, sem visita técnica, sem papelada física. Você assina e começa a economizar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contato">
+  <div class="cta-inner">
+    <div class="cta-badge">⚡ Sem investimento · Só economia</div>
+    <h2>Comece a pagar <em>20% menos</em> ainda esse mês</h2>
+    <p>Preencha abaixo e nossa equipe entra em contato para ativar seu desconto gratuitamente.</p>
+
+    <form class="cta-form" onsubmit="enviarForm(event)">
+      <div class="form-row">
+        <input type="text" class="form-input" placeholder="Seu nome" required />
+        <input type="tel" class="form-input" placeholder="WhatsApp" required />
+      </div>
+      <input type="email" class="form-input" placeholder="E-mail (opcional)" />
+      <input type="text" class="form-input" placeholder="Cidade (Bahia)" required />
+      <button type="submit" class="btn-cta">
+        ⚡ Quero meu desconto de 20%
+      </button>
+    </form>
+
+    <p class="cta-guarantee">🔒 Seus dados estão seguros · Sem spam · Sem compromisso inicial</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="./logo.png" alt="Solar Mais" class="footer-logo" loading="lazy" />
+  <p class="footer-text">
+    Solar Mais — Energia Solar por Geração Distribuída para a Bahia.<br/>
+    Usinas em Irecê, Bahia · Distribuidora COELBA · 20% de desconto garantido.
+  </p>
+  <div class="footer-bottom">
+    <p>© 2025 Solar Mais. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  // Simulador
+  function formatBRL(value) {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(value);
+  }
+
+  function calcular() {
+    const input = document.getElementById('conta-valor');
+    const slider = document.getElementById('slider');
+    const val = parseFloat(input.value) || 0;
+
+    slider.value = Math.min(val, 5000);
+    updateSliderFill(slider);
+
+    const desconto = val * 0.20;
+    const final = val - desconto;
+    const anual = desconto * 12;
+
+    document.getElementById('res-atual').textContent = formatBRL(val);
+    document.getElementById('res-desconto').textContent = '− ' + formatBRL(desconto);
+    document.getElementById('res-final').textContent = formatBRL(final);
+    document.getElementById('res-anual').textContent = formatBRL(anual);
+
+    // Update hero cards
+    document.querySelectorAll('.bill-value')[0].textContent = formatBRL(val);
+    document.querySelectorAll('.bill-value')[1].textContent = formatBRL(final);
+
+    const heroTag = document.querySelector('.saving-tag span');
+    heroTag.textContent = `💰 Você economiza ${formatBRL(desconto)} por mês · ${formatBRL(anual)} por ano`;
+  }
+
+  function syncSlider(value) {
+    document.getElementById('conta-valor').value = value;
+    updateSliderFill(document.getElementById('slider'));
+    calcular();
+  }
+
+  function updateSliderFill(slider) {
+    const min = slider.min || 0;
+    const max = slider.max || 100;
+    const val = slider.value;
+    const pct = ((val - min) / (max - min)) * 100;
+    slider.style.setProperty('--fill', pct + '%');
+  }
+
+  // Init
+  updateSliderFill(document.getElementById('slider'));
+  calcular();
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 20) {
+      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.1)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // Form
+  function enviarForm(e) {
+    e.preventDefault();
+    const btn = document.querySelector('.btn-cta');
+    btn.textContent = '✅ Recebemos seu contato! Em breve nossa equipe fala com você.';
+    btn.style.background = '#22c55e';
+    btn.style.color = 'white';
+    btn.disabled = true;
+  }
+</script>
+
+</body>
+</html>
